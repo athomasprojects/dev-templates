@@ -6,6 +6,8 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
     odin-overlay.url = "github:kilzm/odin-overlay";
+    # I think if you have the odin overlay added to your system's nixpkgs then you set the flake attribute to true.
+    # Otherwise, I think you set this to false and leave everything else the same?
     odin-overlay.flake = true;
   };
 
@@ -29,7 +31,7 @@
   in {
     devShells = forEachSupportedSystem ({pkgs}: {
       default = pkgs.mkShell {
-        name = "odin-shell";
+        name = "odin-dev-shell";
 
         nativeBuildInputs = with pkgs.odin-pkgs; [
           odin-latest
